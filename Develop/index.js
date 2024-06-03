@@ -23,3 +23,41 @@ function renderLicenseSection(license) {
       return ''; // Return empty string if no license
   }
 }
+
+// Function to generate markdown for README
+function generateMarkdown(data) {
+  return `# ${data.title}
+
+## Description
+${data.description}
+
+## Table of Contents
+- Installation
+- Usage
+- License
+- Contributing
+- Tests
+- Questions
+
+## Installation
+${data.installation}
+
+## Usage
+${data.usage}
+
+## License
+${renderLicenseBadge(data.license)}
+${renderLicenseSection(data.license)}
+
+## Contributing
+${data.contributing}
+
+## Tests
+${data.tests}
+
+## Questions
+For additional questions, you can reach me via:
+- GitHub: ${data.githubUsername}
+- Email: ${data.email}
+`;
+}
