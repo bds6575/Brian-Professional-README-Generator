@@ -1,13 +1,25 @@
-// TODO: Include packages needed for this application
+//Function to render license badge
+function renderLicenseBadge(license) {
+  switch (license) {
+    case 'MIT':
+      return '!License: MIT';
+    case 'Apache 2.0':
+      return '!License: Apache 2.0';
+    // Add other licenses as needed
+    default:
+      return ''; // Return empty string if no license
+  }
+}
 
-// TODO: Create an array of questions for user input
-const questions = [];
-
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
-
-// TODO: Create a function to initialize app
-function init() {}
-
-// Function call to initialize app
-init();
+// Function to render license section
+function renderLicenseSection(license) {
+  switch (license) {
+    case 'MIT':
+      return 'This application is covered under the MIT License.';
+    case 'Apache 2.0':
+      return 'This application is covered under the Apache 2.0 License.';
+    // Add other licenses as needed
+    default:
+      return ''; // Return empty string if no license
+  }
+}
