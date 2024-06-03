@@ -1,65 +1,75 @@
-//Function to render license badge
-function renderLicenseBadge(license) {
-  switch (license) {
-    case 'MIT':
-      return '!License: MIT';
-    case 'Apache 2.0':
-      return '!License: Apache 2.0';
-    // Add other licenses as needed
-    default:
-      return ''; // Return empty string if no license
-  }
+const inquirer = require('inquirer');
+const fs = require('fs');
+const generateMarkdown = require('../Develop/utils/generateMarkdown'); 
+
+// Array of questions for user input
+const questions = [
+  {
+    type: 'input',
+    name: 'title',
+    message: 'Enter your project title:',
+  },
+  {
+    type: 'input',
+    name: 'description',
+    message: 'Enter a description for your project:',
+  },
+  {
+    type: 'input',
+    name: 'installation',
+    message: 'Enter installation instructions:',
+  },
+  {
+    type: 'input',
+    name: 'usage',
+    message: 'Enter usage information:',
+  },
+  {
+    type: 'list',
+    name: 'license',
+    message: 'Choose a license for your application:',
+    choices: ['MIT', 'Apache 2.0', 'GNU GPL v3', 'Other'],
+  },
+  {
+    type: 'input',
+    name: 'contributing',
+    message: 'Enter contribution guidelines:',
+  },
+  {
+    type: 'input',
+    name: 'tests',
+    message: 'Enter test instructions:',
+  },
+  {
+    type: 'input',
+    name: 'githubUsername',
+    message: 'Enter your GitHub username:',
+  },
+  {
+    type: 'input',
+    name: 'email',
+    message: 'Enter your email address:',
+  },
+];
+
+// Function to write README file
+function writeToFile(fileName, data) {
+  fs.writeFileSync(fileName, data);
 }
 
-// Function to render license section
-function renderLicenseSection(license) {
-  switch (license) {
-    case 'MIT':
-      return 'This application is covered under the MIT License.';
-    case 'Apache 2.0':
-      return 'This application is covered under the Apache 2.0 License.';
-    // Add other licenses as needed
-    default:
-      return ''; // Return empty string if no license
-  }
+// Function to initialize app
+function init() {
+  inquirer
+    .prompt(questions)
+    .then((answers) => {
+      const readmeContent = generateMarkdown(answers);
+      writeToFile('README.md', readmeContent);
+      console.log('README.md generated successfully!');
+    })
+    .catch((error) => {
+      console.error('Error occurred:', error);
+    });
 }
 
-// Function to generate markdown for README
-function generateMarkdown(data) {
-  return `# ${data.title}
-
-## Description
-${data.description}
-
-## Table of Contents
-- Installation
-- Usage
-- License
-- Contributing
-- Tests
-- Questions
-
-## Installation
-${data.installation}
-
-## Usage
-${data.usage}
-
-## License
-${renderLicenseBadge(data.license)}
-${renderLicenseSection(data.license)}
-
-## Contributing
-${data.contributing}
-
-## Tests
-${data.tests}
-
-## Questions
-For additional questions, you can reach me via:
-- GitHub: ${data.githubUsername}
-- Email: ${data.email}
-`;
-}
-
-module.exports = generateMarkdown;
+// Function call to initialize app
+init();
