@@ -56,3 +56,20 @@ const questions = [
 function writeToFile(fileName, data) {
   fs.writeFileSync(fileName, data);
 }
+
+// Function to initialize app
+function init() {
+  inquirer
+    .prompt(questions)
+    .then((answers) => {
+      const readmeContent = generateMarkdown(answers);
+      writeToFile('README.md', readmeContent);
+      console.log('README.md generated successfully!');
+    })
+    .catch((error) => {
+      console.error('Error occurred:', error);
+    });
+}
+
+// Function call to initialize app
+init();
