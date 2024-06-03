@@ -61,3 +61,5 @@ For additional questions, you can reach me via:
 - Email: ${data.email}
 `;
 }
+
+module.exports = generateMarkdown;
