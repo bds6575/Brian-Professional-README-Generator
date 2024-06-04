@@ -32,12 +32,12 @@ function generateMarkdown(data) {
 ${data.description}
 
 ## Table of Contents
-- Installation
-- Usage
-- License
-- Contributing
-- Tests
-- Questions
+* [Installation](#Installation)
+* [Usage](#Usage)
+* [License](#License)
+* [Contributing](#Contributing)
+* [Tests](#Tests)
+* [Questions](#Questions)
 
 ## Installation
 ${data.installation}
@@ -56,6 +56,7 @@ ${data.contributing}
 ${data.tests}
 
 ## Questions
+<a name="Questions"></a>
 For additional questions, you can reach me via:
 - GitHub: ${data.githubUsername}
 - Email: ${data.email}
