@@ -56,7 +56,6 @@ ${data.contributing}
 ${data.tests}
 
 ## Questions
-<a name="Questions"></a>
 For additional questions, you can reach me via:
 - GitHub: ${data.githubUsername}
 - Email: ${data.email}
